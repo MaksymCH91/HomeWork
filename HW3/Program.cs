@@ -5,7 +5,7 @@
 
     if (n > 1 & n % 2 != 0)
     {
-        for (var i = 2u; i < n; i++)
+        for (var i = 2u; i < n; i+=2)
         {
             if (n % i == 0)
             {
