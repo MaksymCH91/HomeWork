@@ -3,7 +3,7 @@
 {
     var result = true;
 
-    if (n > 1)
+    if (n > 1 & n % 2 != 0)
     {
         for (var i = 2u; i < n; i++)
         {
