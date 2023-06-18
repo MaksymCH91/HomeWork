@@ -17,4 +17,3 @@ int index = Array.FindIndex(MyArray, x => x == requaredNumber);
 Console.WriteLine(index);
 Console.ReadLine();
 
-
