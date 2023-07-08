@@ -17,10 +17,17 @@ namespace HW10
             {
                 Car.trip();
                 Console.WriteLine();
+                
             }
             Console.BackgroundColor = ConsoleColor.Black;
+           
+            BMW bmwx2 = new BMW("X2");
+            bmwx2.PrintInteffaceComponents();
+            Porshe CareraGT = new Porshe("CareraGT");
+            CareraGT.PrintInteffaceComponents ();   
 
         }
+
 
     }
 }
