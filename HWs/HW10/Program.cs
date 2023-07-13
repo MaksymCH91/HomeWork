@@ -21,7 +21,7 @@ namespace HW10
                 
             }
             Console.BackgroundColor = ConsoleColor.Black;
-           
+            Bmw bmwx2 = null;
             do
             {
                 Console.Write("Input model: ");
@@ -29,9 +29,9 @@ namespace HW10
                 string modelOfCar = Console.ReadLine();
                 try
                 {
-                    Bmw bmwx2 = new Bmw(Enum.Parse<KindOfBmw>(modelOfCar));
+                    bmwx2 = new Bmw(Enum.Parse<KindOfBmw>(modelOfCar));
                 }
-                catch (Exception e)
+                catch (Exception )
                 {
 
                     Console.WriteLine("Please re-input model of BMW");
