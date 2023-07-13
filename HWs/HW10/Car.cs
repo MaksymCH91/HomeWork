@@ -1,13 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HW10
+﻿namespace HW10
 {
-    interface IRadio
+    public enum KindOfBmw
+{
+    X2,
+    X5,
+    M1
+}
+   
+    public enum KindOfPorshe
+    {
+      CareraGT,
+      Panamera,
+      M911
+    }
+
+    internal interface IRadio
     {
         string TurnOn(string model);
         string TurnOff(string model);
@@ -15,7 +22,8 @@ namespace HW10
         string IncreaseVolume(string model);
 
     }
-    interface ISeats
+
+    internal interface ISeats
     {
         string AdjustPosition(string model);
         string HeatOn(string model);
@@ -26,40 +34,41 @@ namespace HW10
     {
         public Car(string model) 
         { 
-            this .model = model;
+            this .Model = model;
         }
-        public string model = "-1";
+        public string Model = "-1";
         public int MaxSpeed = 50;
         public string BrakesPedal = "stop";
         public string AcceleratorPedal = "accelerator pedal";
-        virtual public void trip()
+
+        public virtual void Trip()
         {
             Console.WriteLine(AcceleratorPedal + " " + MaxSpeed + " " + "BrakesPedal");
         }
     }
-    public class BMW: Car, IRadio, ISeats
+    public class Bmw: Car, IRadio, ISeats
     {
-        public BMW(string model) : base(model)
+        public Bmw(KindOfBmw model) : base(model.ToString())
         {
-            this.model = model;
+            this.Model = model.ToString();
         }
-        public string TurnOn(string model) { return this.model = model + " Radio turn on"; }
-        public string TurnOff(string model) { return this.model = model + " Radio turn off"; }
-        public string ChangeStation(string model) { return this.model = model + " Changed radio station to 937"; }
-        public string IncreaseVolume(string model) { return this.model = model + " Volume +5"; }
-        public string AdjustPosition(string model) { return this.model = model + "  Position Up"; }
-        public string HeatOn(string model) { return this.model = model + " heat on"; }
-        public string HeatOff(string model) { return this.model = model + " heat off"; }
+        public string TurnOn(string model) { return this.Model = model + " Radio turn on"; }
+        public string TurnOff(string model) { return this.Model = model + " Radio turn off"; }
+        public string ChangeStation(string model) { return this.Model = model + " Changed radio station to 937"; }
+        public string IncreaseVolume(string model) { return this.Model = model + " Volume +5"; }
+        public string AdjustPosition(string model) { return this.Model = model + "  Position Up"; }
+        public string HeatOn(string model) { return this.Model = model + " heat on"; }
+        public string HeatOff(string model) { return this.Model = model + " heat off"; }
         
         public void PrintInteffaceComponents()
         {
-           Console.WriteLine($"{TurnOn(model)}\n{TurnOff(model)}\n{ChangeStation(model)}\n{IncreaseVolume(model)}\n{AdjustPosition(model)}\n{HeatOn(model)}\n{HeatOff(model)}\n");
+           Console.WriteLine($"{TurnOn(Model)}\n{TurnOff(Model)}\n{ChangeStation(Model)}\n{IncreaseVolume(Model)}\n{AdjustPosition(Model)}\n{HeatOn(Model)}\n{HeatOff(Model)}\n");
         }
 
-        public override void trip()
+        public override void Trip()
         {
             Console.BackgroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"BMW {model}:" + ( AcceleratorPedal+" Fast speed accelerastion ")+(MaxSpeed + 200)+" " + BrakesPedal + " in 10 sec");
+            Console.WriteLine($"BMW {Model}:" + ( AcceleratorPedal+" Fast speed accelerastion ")+(MaxSpeed + 200)+" " + BrakesPedal + " in 10 sec");
         }
 
     }
@@ -67,24 +76,25 @@ namespace HW10
     {
         public Porshe(string model) : base(model)
         {
-            this.model = model;
+            this.Model = model;
         }
-        public string TurnOn(string model) { return this.model = model + " Radio turn on"; }
-        public string TurnOff(string model) { return this.model = model + " Radio turn off"; }
-        public string ChangeStation(string model) { return this.model = model + " Changed radio station to 135"; }
-        public string IncreaseVolume(string model) { return this.model = model + " Volume +2"; }
-        public string AdjustPosition(string model) { return this.model = model + "  Position down"; }
-        public string HeatOn(string model) { return this.model = model + " heat on"; }
-        public string HeatOff(string model) { return this.model = model + " heat off"; }
+        public string TurnOn(string model) { return this.Model = model + " Radio turn on"; }
+        public string TurnOff(string model) { return this.Model = model + " Radio turn off"; }
+        public string ChangeStation(string model) { return this.Model = model + " Changed radio station to 135"; }
+        public string IncreaseVolume(string model) { return this.Model = model + " Volume +2"; }
+        public string AdjustPosition(string model) { return this.Model = model + "  Position down"; }
+        public string HeatOn(string model) { return this.Model = model + " heat on"; }
+        public string HeatOff(string model) { return this.Model = model + " heat off"; }
 
         public void PrintInteffaceComponents()
         {
-            Console.WriteLine($"{TurnOn(model)}\n{TurnOff(model)}\n{ChangeStation(model)}\n{IncreaseVolume(model)}\n{AdjustPosition(model)}\n{HeatOn(model)}\n{HeatOff(model)}\n");
+            Console.WriteLine($"{TurnOn(Model)}\n{TurnOff(Model)}\n{ChangeStation(Model)}\n{IncreaseVolume(Model)}\n{AdjustPosition(Model)}\n{HeatOn(Model)}\n{HeatOff(Model)}\n");
         }
-        public override void trip()
+
+        public override void Trip()
         {
             Console.BackgroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Porshe {model}:" + (AcceleratorPedal + " hight speed ") + (MaxSpeed + 250) + " " + BrakesPedal + "In 5 sec");
+            Console.WriteLine($"Porshe {Model}:" + (AcceleratorPedal + " hight speed ") + (MaxSpeed + 250) + " " + BrakesPedal + "In 5 sec");
         }
     }
 }

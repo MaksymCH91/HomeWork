@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Intrinsics.X86;
 using System.Xml.Linq;
 
 namespace HW10
@@ -7,24 +8,39 @@ namespace HW10
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             List < Car > Cars = new List<Car>()
             {
-                new BMW("x5"), new Porshe("Carera GT"),new BMW ("X2")
+                new Bmw(KindOfBmw.X5), new Porshe("CareraGT"),new Bmw (KindOfBmw.X2)
             }; 
        foreach (var Car in Cars)
             {
-                Car.trip();
+                Car.Trip();
                 Console.WriteLine();
                 
             }
             Console.BackgroundColor = ConsoleColor.Black;
            
-            BMW bmwx2 = new BMW("X2");
+            do
+            {
+                Console.Write("Input model: ");
+                
+                string modelOfCar = Console.ReadLine();
+                try
+                {
+                    Bmw bmwx2 = new Bmw(Enum.Parse<KindOfBmw>(modelOfCar));
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine("Please re-input model of BMW");
+                }
+            } while ( bmwx2 != null);
+
             bmwx2.PrintInteffaceComponents();
-            Porshe CareraGT = new Porshe("CareraGT");
-            CareraGT.PrintInteffaceComponents ();   
+            Porshe CareraGt = new Porshe("CareraGT");
+            CareraGt.PrintInteffaceComponents ();   
 
         }
 

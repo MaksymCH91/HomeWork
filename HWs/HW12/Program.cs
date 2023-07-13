@@ -18,17 +18,18 @@ namespace HW12
         {
             for (int i = 0; i < arr.Length; i++)
             {
-                if (arr[i] == val) { return i; };
+                if (arr[i] == val) return i;
             }
             return -1;
         }
-        static void Main(string[] args)
+
+        private static void Main(string[] args)
         {
-            const int n = 2000000;
+            const int n = 40000000;
             int[] Arr1 = new int[n];
             object[] Arr2 = new object[n];
             Random rnd = new Random();
-            for (int i = 0; i < n - 1; i++)
+            for (int i = 0; i < n; i++)
             {
                 Arr1[i] = rnd.Next();
                 Arr2[i] = rnd.Next();

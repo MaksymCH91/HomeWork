@@ -9,42 +9,42 @@ namespace HW8
 {
     internal class MyMetod
     {
-        public static void PrintAll(List<Person> People)
+        public static void PrintAll(List<Person> people)
         {
-            foreach (var item in People)
+            foreach (var item in people)
             {
-                Console.WriteLine(item._Name + "\t \t \t" + item._Adress + "\t \t \t" + item._Pnumber);
+                Console.WriteLine(item.Name + "\t \t \t" + item.Adress + "\t \t \t" + item.Pnumber);
             }
         }
-        static public  void AddPerson(List<Person> People)
+        static public  void AddPerson(List<Person> people)
         {
             Console.Write("Pleases input new contact in format  Name,Adress;Phone number :");
             string[] Temp = Console.ReadLine().Split(',');
-            People.Add(new Person(Temp[0], Temp[1], Temp[2]));
+            people.Add(new Person(Temp[0], Temp[1], Temp[2]));
             Console.WriteLine("Adding of Contact is sussecful");
-            PrintPerson(People, 0);
-            PrintPerson(People, People.Count-1);
+            PrintPerson(people, 0);
+            PrintPerson(people, people.Count-1);
         }
-        static public void PrintPerson(List<Person> People, int index)
+        static public void PrintPerson(List<Person> people, int index)
 
         {
-            Console.WriteLine(People[index]._Name + "\t \t \t" + People[index]._Adress + "\t \t \t" + People[index]._Pnumber);
+            Console.WriteLine(people[index].Name + "\t \t \t" + people[index].Adress + "\t \t \t" + people[index].Pnumber);
         }
-        static public void FindPerson(List<Person> People)
+        static public void FindPerson(List<Person> people)
         {
             Console.Write("Input name or phon to find details: ");
             string Variable = Console.ReadLine();
-            if (People.FindIndex(p => p._Name == Variable) != -1)
+            if (people.FindIndex(p => p.Name == Variable) != -1)
             {
                 {
-                    PrintPerson(People, 0);
-                    PrintPerson(People, People.FindIndex(p => p._Name == Variable));
+                    PrintPerson(people, 0);
+                    PrintPerson(people, people.FindIndex(p => p.Name == Variable));
                 }
             }
-            else if (People.FindIndex(p => p._Pnumber == Variable) != -1)
+            else if (people.FindIndex(p => p.Pnumber == Variable) != -1)
             {
-                PrintPerson(People, 0);
-                PrintPerson(People, People.FindIndex(p => p._Pnumber == Variable));
+                PrintPerson(people, 0);
+                PrintPerson(people, people.FindIndex(p => p.Pnumber == Variable));
 
             }
             else { Console.WriteLine("There are no result"); }

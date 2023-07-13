@@ -12,15 +12,15 @@ namespace HW8
     {
        
 
-        public Person(string _Name, string _Andress, string _PNumber)
+        public Person(string name, string andress, string pNumber)
         {
-            this._Name = _Name;
-            this._Adress = _Andress;
-            this._Pnumber = _PNumber;
+            this.Name = name;
+            this.Adress = andress;
+            this.Pnumber = pNumber;
         }
-        public string _Name;
-        public string _Adress;
-        public string _Pnumber;
+        public string Name;
+        public string Adress;
+        public string Pnumber;
 
       
     }
