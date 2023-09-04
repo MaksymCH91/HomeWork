@@ -54,45 +54,45 @@ namespace CustomExpressionEvaluator
             {
                 if (char.IsDigit(ch)) // digit
                 {
-                    int numStart = expression.IndexOf(ch);// find the index of the first digit of the number
-                    int numEnd = numStart; // initialize the index of the last digit of the number
+                    int numStart = expression.IndexOf(ch);// find the index of the first digit of the number and initialize the index of the last digit of the number
+                    int numEnd = numStart; 
 
-                    while (numEnd < expression.Length && (char.IsDigit(expression[numEnd]) || expression[numEnd] == '.')) // while the index is within the expression and the character is a digit or a decimal point
+                    while (numEnd < expression.Length && (char.IsDigit(expression[numEnd]) || expression[numEnd] == '.')) 
                     {
                         numEnd++;
                     }
 
                     string numStr = expression.Substring(numStart, numEnd - numStart);// get the substring that represents the number
-                    postfixQueue.Enqueue(double.Parse(numStr));// parse the number as a double and enqueue it to the queue
+                    postfixQueue.Enqueue(double.Parse(numStr));
                 }
-                else if (ch == '(') // if the character is an opening parenthesis
+                else if (ch == '(') // if the character is an opening parenthesis and push  to the stack
                 {
-                    operators.Push(ch);// push it to the stack
+                    operators.Push(ch);
                 }
                 else if (ch == ')') // if the character is a closing parenthesis
                 {
                     while (operators.Count > 0 && operators.Peek() != '(') // while the stack is not empty and the top element is not an opening parenthesis
                     {
-                        postfixQueue.Enqueue(operators.Pop());// pop and enqueue the top element from the stack to the queue
+                        postfixQueue.Enqueue(operators.Pop());
                     }
                     operators.Pop(); // Pop '('
                 }
                 else if (Precedence.ContainsKey(ch)) // if the character is an operator and its precedence is defined in a dictionary called Precedence
                 {
-                    while (operators.Count > 0 && operators.Peek() != '(' && Precedence[operators.Peek()] >= Precedence[ch]) // while the stack is not empty and the top element is not an opening parenthesis and its precedence is higher or equal to the current operator's precedence
+                    while (operators.Count > 0 && operators.Peek() != '(' && Precedence[operators.Peek()] >= Precedence[ch]) 
                     {
-                        postfixQueue.Enqueue(operators.Pop());// pop and enqueue the top element from the stack to the queue
+                        postfixQueue.Enqueue(operators.Pop());
                     }
-                    operators.Push(ch);// push the current operator to the stack
+                    operators.Push(ch);
                 }
             }
 
             while (operators.Count > 0)// after looping through all characters, while the stack is not empty
             {
-                postfixQueue.Enqueue(operators.Pop()); // pop and enqueue any remaining operators from the stack to the queue
+                postfixQueue.Enqueue(operators.Pop()); 
             }
 
-            return postfixQueue; // return the queue that contains the postfix expression
+            return postfixQueue; 
         }
     }
 
