@@ -65,9 +65,9 @@ namespace HW21
             public string building = "-1";
             public string Post_index = "-1";
 
-            public bool AreaValidation (AdressGIZ adress)
+            public static bool AreaValidation (AdressGIZ adress)
             {
-                var logFilePath = @"C:\test\Log.txt";
+                var logFilePath = @"D:\test\Log.txt";
                 using StreamWriter writer = new StreamWriter (logFilePath);
                 
                                   
@@ -102,7 +102,7 @@ namespace HW21
                     case Area_List.East:
                         if (!Enum.IsDefined(typeof(East_Oblast_List), adress.Oblast))
                         {
-                            writer.WriteLine($"{DateTime.Now}, Invalid Oblast East");
+                            writer.WriteLine($"{DateTime.Now} Invalid Oblast East");
                             return false;
                         }
                         break;
@@ -171,6 +171,7 @@ namespace HW21
             List<AdressGIZ> southAddresses = adressGIZs.Where(address => address.Area == "South").ToList();
             foreach (var address in southAddresses)
             {
+                AdressGIZ.AreaValidation(address);
                 Console.WriteLine($"Area: {address.Area}, Oblast: {address.Oblast}, District: {address.District}, Hromada: {address.Hromada}, Settlement_name: {address.Settlement_name}, Street: {address.Street}, Building: {address.building}, Post_index: {address.Post_index}");
             }
         }
