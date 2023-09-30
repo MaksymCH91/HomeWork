@@ -21,7 +21,7 @@ namespace HW26
             //    return;
             //}
 
-            for (int i = 1; i < 16; i++)
+            for (int i = 1; i < Environment.ProcessorCount; i++)
             {
                 timeOfCalculation(numbers, i);
             }
