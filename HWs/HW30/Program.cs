@@ -49,10 +49,11 @@
             }
 
             GC.Collect();
-             PrintElementsUsingUnsafe();
+            Console.WriteLine("MyOtherObject has been disposed.");
+            PrintElementsUsingUnsafe();
             GC.WaitForPendingFinalizers();
 
-            Console.WriteLine("MyOtherObject has been disposed.");
+            Console.WriteLine("MyOtherObject has been WaitForPendingFinalizers disposed.");
         }
         private unsafe void PrintElementsUsingUnsafe()
         {
