@@ -31,9 +31,9 @@ namespace HW32
                 try
                 {
                     //// Insert data
-                    //var newData = new Person { Name = "Maksym", Surname = "Chornokon" };
-                    //context.Persons.Add(newData);
-                    //context.SaveChanges();
+                    var newData = new Person { Name = "Maksym", Surname = "Chornokon" };
+                    context.Persons.Add(newData);
+                    context.SaveChanges();
 
                     // Update data
                     var dataToUpdate = context.Persons.Find(3);
@@ -43,22 +43,29 @@ namespace HW32
                         dataToUpdate.Surname = "UpdatedSurname";
                         context.SaveChanges();
                     }
-                    // creating of delated id
-                    var newData = new Person { Id = 1, Name = "NewName", Surname = "NewSurname" };
-                    context.Persons.Add(newData);
-                    context.SaveChanges(); 
+                    //// creating of delated id - not work????
+                    //var newData = new Person { Id = 1, Name = "NewName", Surname = "NewSurname" };
+                    //context.Persons.Add(newData);
+                    //context.SaveChanges(); 
 
                     // Delete data
-                    var dataToDelete = context.Persons.Find(8);
-                    if (dataToDelete != null)
-                    {
-                        context.Persons.Remove(dataToDelete);
-                        context.SaveChanges();
-                    }
+                    //var dataToDelete = context.Persons.Find(8);
+                    //if (dataToDelete != null)
+                    //{
+                    //    context.Persons.Remove(dataToDelete);
+                    //    context.SaveChanges();
+                    //}
 
                     // Select data
+                    ;
                     var allData = context.Persons.ToList();
                     foreach (var item in allData)
+                    {
+                        Console.WriteLine($"ID: {item.Id}, Name: {item.Name}, Surname: {item.Surname}");
+                    }
+                    var personsWithUpdatedName = context.Persons.Where(p => p.Name == "UpdatedName").ToList();
+                    Console.WriteLine("write all elements with name=UpdatedName");
+                    foreach (var item in personsWithUpdatedName)
                     {
                         Console.WriteLine($"ID: {item.Id}, Name: {item.Name}, Surname: {item.Surname}");
                     }
